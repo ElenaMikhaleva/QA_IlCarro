@@ -3,13 +3,17 @@ package ui_tests;
 import dto.Car;
 import manager.ApplicationManager;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LetTheCarWorkPage;
 import utils.HeaderMenuItem;
+import utils.TestNGListener;
 
 import static pages.BasePage.clickHeaderBtn;
 import static utils.RandomUtils.generateString;
+
+@Listeners(TestNGListener.class)
 
 public class AddNewCarTests extends ApplicationManager {
     LetTheCarWorkPage letTheCarWorkPage;
