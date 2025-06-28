@@ -15,8 +15,10 @@ public class LetTheCarWorkPage extends BasePage {
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
     }
 
-    @FindBy(id = "pichupPlace")
+    @FindBy(id = "pickUpPlace")
     WebElement inputCity;
+    @FindBy(xpath = "//div[@class='pac-container hdpi']//button")
+    WebElement btnOkGoogleMaps;
     @FindBy(id = "make")
     WebElement inputManufacturer;
     @FindBy(id = "model")
@@ -24,9 +26,30 @@ public class LetTheCarWorkPage extends BasePage {
     @FindBy(id = "year")
     WebElement inputYear;
     @FindBy(id = "fuel")
-    WebElement inputFuel;
+    WebElement selectFuel;
+    @FindBy(id = "seats")
+    WebElement inputSeats;
+    @FindBy(id = "class")
+    WebElement inputCarClass;
+    @FindBy(id = "serialNumber")
+    WebElement inputSerialNumber;
+    @FindBy(id = "price")
+    WebElement inputPrice;
+    @FindBy(xpath = "//button[@type='submit']")
+    WebElement btnSubmit;
 
     public void typeAddNewCarForm(Car car) {
+        inputCity.sendKeys(car.getCity());
+        btnOkGoogleMaps.click();
+        inputManufacturer.sendKeys(car.getManufacture());
+        inputModel.sendKeys(car.getModel());
+        inputYear.sendKeys(car.getYear());
+        selectFuel.sendKeys(car.getFuel());
+        inputSeats.sendKeys(car.getSeats().toString());
+        inputCarClass.sendKeys(car.getCarClass());
+        inputSerialNumber.sendKeys((car.getSerialNumber()));
+        inputPrice.sendKeys(car.getPricePerDay() + "");
+        btnSubmit.click();
 
     }
 }
