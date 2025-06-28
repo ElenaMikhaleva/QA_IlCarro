@@ -55,6 +55,6 @@ public abstract class BasePage {
     }
 
     public boolean elementIsEnabled(WebElement element) {
-        return element.isEnabled()
+        return element.isEnabled();
     }
 }

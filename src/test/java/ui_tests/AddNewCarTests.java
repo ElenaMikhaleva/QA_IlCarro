@@ -1,5 +1,6 @@
 package ui_tests;
 
+import data_provider.CarDP;
 import dto.Car;
 import manager.ApplicationManager;
 import org.testng.Assert;
@@ -43,21 +44,14 @@ public class AddNewCarTests extends ApplicationManager {
         letTheCarWorkPage.typeAddNewCarForm(car);
     }
 
-    @Test
-    public void addNewCar_NegativeTest_emptyManufacturer() {
-        Car car = Car.builder()
-                .city("Tel Aviv")
-                .manufacture("")
-                .model("Corolla")
-                .year("2019")
-                .fuel("gas")
-                .seats(0)
-                .carClass("Compact Sedan")
-                .serialNumber(generateString(7))
-                .pricePerDay(100.77)
-                .about("Reliable and fuel-efficient sedan perfect for city driving and small families.")
-                .image("")
-                .build();
+    @Test(dataProvider = "addNewCarDP", dataProviderClass = CarDP.class)
+    public void addNewCarDP_PositiveTest(Car car) {
+        letTheCarWorkPage.typeAddNewCarForm(car);
+    }
+
+    @Test(dataProvider = "addNewCarDPFile", dataProviderClass = CarDP.class)
+    public void addNewCar_NegativeTest_emptyManufacturer(Car car) {
+        logger.info("test data --> " + car.toString());
         letTheCarWorkPage.typeAddNewCarForm(car);
         Assert.assertFalse(letTheCarWorkPage.isBtnSubmitEnabled());
     }
