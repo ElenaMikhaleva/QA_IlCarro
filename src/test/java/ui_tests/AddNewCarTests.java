@@ -2,6 +2,7 @@ package ui_tests;
 
 import dto.Car;
 import manager.ApplicationManager;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -37,6 +38,44 @@ public class AddNewCarTests extends ApplicationManager {
                 .serialNumber(generateString(7))
                 .pricePerDay(100.77)
                 .about("Reliable and fuel-efficient sedan perfect for city driving and small families.")
+                .image("download.jpg")
+                .build();
+        letTheCarWorkPage.typeAddNewCarForm(car);
+    }
+
+    @Test
+    public void addNewCar_NegativeTest_emptyManufacturer() {
+        Car car = Car.builder()
+                .city("Tel Aviv")
+                .manufacture("")
+                .model("Corolla")
+                .year("2019")
+                .fuel("gas")
+                .seats(0)
+                .carClass("Compact Sedan")
+                .serialNumber(generateString(7))
+                .pricePerDay(100.77)
+                .about("Reliable and fuel-efficient sedan perfect for city driving and small families.")
+                .image("")
+                .build();
+        letTheCarWorkPage.typeAddNewCarForm(car);
+        Assert.assertFalse(letTheCarWorkPage.isBtnSubmitEnabled());
+    }
+
+    @Test
+    public void addNewCar_NegativeTest_invalidSeats() {
+        Car car = Car.builder()
+                .city("Tel Aviv")
+                .manufacture("Toyota")
+                .model("Corolla")
+                .year("2019")
+                .fuel("gas")
+                .seats(0)
+                .carClass("Compact Sedan")
+                .serialNumber(generateString(7))
+                .pricePerDay(100.77)
+                .about("Reliable and fuel-efficient sedan perfect for city driving and small families.")
+                .image("")
                 .build();
         letTheCarWorkPage.typeAddNewCarForm(car);
     }

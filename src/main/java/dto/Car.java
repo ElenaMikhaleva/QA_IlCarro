@@ -10,7 +10,6 @@ import lombok.ToString;
 @Builder
 @ToString
 public class Car {
-
     private String serialNumber;
     private String manufacture;
     private String model;
@@ -21,4 +20,5 @@ public class Car {
     private Double pricePerDay;
     private String about;
     private String city;
+    private String image;
 }

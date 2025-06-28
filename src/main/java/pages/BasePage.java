@@ -53,4 +53,8 @@ public abstract class BasePage {
     public boolean isTextInElementPresent(WebElement element, String text) {
         return element.getText().contains(text);
     }
+
+    public boolean elementIsEnabled(WebElement element) {
+        return element.isEnabled()
+    }
 }
