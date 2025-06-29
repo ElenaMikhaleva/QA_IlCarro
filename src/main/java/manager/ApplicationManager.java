@@ -32,7 +32,7 @@
             driver = new EventFiringDecorator<>(webDriverListener).decorate(driver);
         }
 
-        @AfterMethod(enabled = true)
+        @AfterMethod(enabled = false)
         public void tearDown() {
 //            logger.info("Stop test ---------------------");
             if (driver != null) {
