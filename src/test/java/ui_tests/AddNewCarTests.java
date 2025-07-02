@@ -2,6 +2,7 @@ package ui_tests;
 
 import data_provider.CarDP;
 import dto.Car;
+import dto.UserLombok;
 import manager.ApplicationManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -9,16 +10,19 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LetTheCarWorkPage;
+import pages.LoginPage;
 import utils.HeaderMenuItem;
 import utils.TestNGListener;
 
 import static pages.BasePage.clickHeaderBtn;
+import static utils.PropertiesReader.getProperty;
 import static utils.RandomUtils.generateString;
 
 @Listeners(TestNGListener.class)
 
 public class AddNewCarTests extends ApplicationManager {
     LetTheCarWorkPage letTheCarWorkPage;
+    LoginPage loginPage;
 
     @BeforeMethod
     public void goToLetTheCarWorkPage() {

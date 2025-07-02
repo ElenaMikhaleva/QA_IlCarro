@@ -3,6 +3,7 @@ package ui_tests;
 import manager.ApplicationManager;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.util.RetryAnalyzerCount;
 import pages.HomePage;
 import pages.ResultsPage;
 
@@ -10,7 +11,7 @@ import java.time.LocalDate;
 
 public class SearchTests extends ApplicationManager {
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzerCount.class)
     public void searchPositiveTest() {
         HomePage homePage = new HomePage(getDriver());
         homePage.typeSearchForm("Tel Aviv", LocalDate.of(25,7,10), LocalDate.of(25, 8, 10));
